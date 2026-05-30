@@ -199,13 +199,13 @@
   .lb-count{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);
     font-family:var(--font-mono);font-size:14px;letter-spacing:.1em;z-index:101}
   @media(prefers-reduced-motion:reduce){.orb,.node.on{animation:none}.shots img:hover{transform:none}}
-  /* PDF-экспорт: все слайды по странице 16:9 */
+  /* PDF-экспорт: все слайды по странице 16:9 (1920×1080 ≡ 20×11.25in @96dpi — равно дизайн-вьюпорту) */
   @media print{
-    @page{size:13.333in 7.5in;margin:0}
-    html,body{overflow:visible;height:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    @page{size:20in 11.25in;margin:0}
+    html,body{overflow:visible;height:auto;background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact}
     .deck{position:static;height:auto}
-    .slide{position:relative;inset:auto;width:13.333in;height:7.5in;opacity:1!important;visibility:visible!important;
-      transform:none!important;page-break-after:always;break-after:page;padding:0.5in 0.7in}
+    .slide{position:relative;inset:auto;width:20in;height:11.25in;opacity:1!important;visibility:visible!important;
+      transform:none!important;page-break-after:always;break-after:page;overflow:hidden}
     .orb,.scan,.bar,.count,.notes,#lightbox{display:none!important}
     *{animation:none!important;transition:none!important}
   }
