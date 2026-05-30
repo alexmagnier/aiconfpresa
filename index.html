@@ -138,8 +138,10 @@
 
   .bar{position:fixed;top:0;left:0;height:3px;z-index:50;width:0;background:linear-gradient(90deg,var(--primary),var(--success));box-shadow:0 0 12px var(--glow-strong);transition:width .45s ease}
   .count{position:fixed;bottom:18px;right:22px;color:var(--muted-2);font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;z-index:50}
-  .brand{position:fixed;bottom:18px;left:22px;color:var(--muted-2);font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;z-index:50}
-  .hint{position:fixed;top:14px;right:18px;color:var(--muted-2);font-family:var(--font-mono);font-size:11px;letter-spacing:.05em;z-index:50;opacity:.6}
+  .brand{position:fixed;bottom:16px;left:22px;color:var(--muted);font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;z-index:50}
+  .brand .ig{color:var(--primary);font-weight:700;text-shadow:0 0 10px var(--glow-soft);margin:0 4px}
+  .brand .co{color:var(--muted-2);opacity:.8}
+  .hint{position:fixed;top:14px;right:20px;color:var(--primary);font-family:var(--font-mono);font-size:13px;font-weight:700;letter-spacing:.08em;z-index:50;text-shadow:0 0 10px var(--glow-soft);opacity:.85}
   .notes{position:fixed;left:0;right:0;bottom:0;max-height:40vh;overflow:auto;z-index:60;display:none;
     background:rgba(8,13,28,.97);border-top:2px solid var(--primary);box-shadow:0 -10px 40px var(--glow-soft);padding:18px 26px 24px;font-size:16px;line-height:1.6;color:var(--fg)}
   .notes.show{display:block}
@@ -197,14 +199,24 @@
   .lb-count{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);
     font-family:var(--font-mono);font-size:14px;letter-spacing:.1em;z-index:101}
   @media(prefers-reduced-motion:reduce){.orb,.node.on{animation:none}.shots img:hover{transform:none}}
+  /* PDF-экспорт: все слайды по странице 16:9 */
+  @media print{
+    @page{size:13.333in 7.5in;margin:0}
+    html,body{overflow:visible;height:auto;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .deck{position:static;height:auto}
+    .slide{position:relative;inset:auto;width:13.333in;height:7.5in;opacity:1!important;visibility:visible!important;
+      transform:none!important;page-break-after:always;break-after:page;padding:0.5in 0.7in}
+    .orb,.scan,.bar,.count,.notes,#lightbox{display:none!important}
+    *{animation:none!important;transition:none!important}
+  }
 </style>
 </head>
 <body>
 <div class="orb orb-a"></div><div class="orb orb-b"></div><div class="orb orb-c"></div>
 <div class="scan"></div>
 <div class="bar" id="bar"></div>
-<div class="hint">←  →  слайды · S — заметки · F — фуллскрин</div>
-<div class="brand">ReveluxAI · AI для бизнеса · 2026</div>
+<div class="hint">@alex_magnier</div>
+<div class="brand">Алекс Манье <span class="ig">@alex_magnier</span><span class="co">· ReveluxAI · AI для бизнеса</span></div>
 <div class="count" id="count"></div>
 
 <div class="deck" id="deck">
