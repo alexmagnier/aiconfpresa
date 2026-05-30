@@ -147,10 +147,40 @@
   .level{display:inline-block;width:max-content;font-family:var(--font-mono);font-size:clamp(11px,1.2vw,15px);letter-spacing:.16em;text-transform:uppercase;color:#041018;background:var(--primary);padding:5px 12px;border-radius:8px;font-weight:700;margin-bottom:12px;box-shadow:0 0 18px var(--glow-soft)}
   .level.l2{background:var(--success)}
   .shots{display:flex;gap:14px;justify-content:center;align-items:center;margin:14px 0;max-width:100%}
+  .epochs{display:flex;align-items:flex-start;gap:clamp(10px,1.8vw,24px);margin:16px 0;flex-wrap:wrap}
+  .epochs .step{display:flex;flex-direction:column;gap:12px;flex:1 1 220px;min-width:200px}
+  .epochs .step .node{align-self:flex-start}
+  .epochs .cap{color:var(--muted-2);font-size:clamp(13px,1.45vw,19px);line-height:1.4}
+  .epochs .cap.green{color:var(--success);font-weight:700;text-shadow:0 0 8px rgba(0,255,163,.55),0 0 18px rgba(0,255,163,.28)}
+  .epochs .ar{color:var(--primary);font-size:clamp(20px,2.6vw,36px);font-weight:700;text-shadow:0 0 12px var(--glow-soft);align-self:flex-start;padding-top:14px}
+  @media(max-width:760px){.epochs{flex-direction:column;align-items:stretch}.epochs .ar{align-self:center;padding-top:0}}
   .shots img{height:40vh;width:auto;border-radius:14px;border:1px solid var(--card-border);box-shadow:0 10px 34px rgba(0,0,0,.45),0 0 0 1px var(--card-border);cursor:zoom-in;transition:transform .18s ease,border-color .18s ease}
   .shots img:hover{transform:scale(1.04);border-color:var(--card-border-hi)}
   .shots-hint{color:var(--muted-2);font-family:var(--font-mono);font-size:clamp(11px,1.2vw,14px);letter-spacing:.05em;margin-top:8px}
   @media(max-width:760px){.shots{flex-wrap:wrap}.shots img{height:auto;max-width:46%}}
+  /* QR-карточки финала */
+  .qrs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:12px 0;max-width:1280px}
+  .qr-card{background:var(--card);border:1px solid var(--card-border);border-top:3px solid var(--primary);border-radius:16px;padding:14px;
+    backdrop-filter:blur(12px);display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+  .qr-card:nth-child(2){border-top-color:var(--success);box-shadow:0 0 28px rgba(0,255,163,.10)}
+  .qr-card:nth-child(3){border-top-color:var(--accent);box-shadow:0 0 28px rgba(75,123,255,.12)}
+  .qr-card img{height:32vh;width:auto;max-width:92%;border-radius:10px;background:#fff;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+  .qr-card .qrn{font-family:var(--font-display);font-weight:700;color:var(--fg-strong);font-size:clamp(16px,1.8vw,23px)}
+  .qr-card .qrd{color:var(--muted);font-size:clamp(12px,1.3vw,16px);line-height:1.4;max-width:30ch}
+  @media(max-width:900px){.qrs{grid-template-columns:1fr}.qr-card img{height:auto;max-width:60%}}
+
+  /* 3 разные вещи */
+  .confuse{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0;max-width:1180px}
+  .cc{background:var(--card);border:1px solid var(--card-border);border-top:3px solid var(--primary);border-radius:14px;padding:16px 18px;backdrop-filter:blur(12px)}
+  .cc:nth-child(2){border-top-color:var(--success)}
+  .cc:nth-child(3){border-top-color:var(--accent)}
+  .cc .metaphor{font-family:var(--font-mono);font-size:clamp(12px,1.3vw,16px);letter-spacing:.06em;color:var(--primary);margin-bottom:8px;text-transform:uppercase}
+  .cc:nth-child(2) .metaphor{color:var(--success)}
+  .cc:nth-child(3) .metaphor{color:var(--accent)}
+  .cc .ccn{font-family:var(--font-display);font-weight:700;color:var(--fg-strong);font-size:clamp(17px,1.9vw,25px);margin-bottom:8px}
+  .cc .ccd{color:var(--muted);font-size:clamp(13px,1.45vw,18px);line-height:1.42}
+  @media(max-width:900px){.confuse{grid-template-columns:1fr}}
+
   /* lightbox */
   #lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
     background:rgba(4,8,18,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -237,16 +267,22 @@
   <!-- 5 три эпохи -->
   <section class="slide" data-notes="Три эпохи за два года. Вайбкодинг — болтаешь, он генерит. Agentic engineering — собираешь команды агентов. И сейчас — agent harness engineering, инженерия обвязки: строишь не агентов, а среду вокруг них — память, доступ к данным, дирижёра. Это новая профессия и новое место, где деньги.">
     <div class="kicker">Красная линия</div>
-    <h2 style="margin-bottom:26px">Три эпохи AI-разработки</h2>
-    <div class="flow">
-      <div class="node">Вайб-кодинг</div><div class="arrow">→</div>
-      <div class="node">Agentic Engineering</div><div class="arrow">→</div>
-      <div class="node on">Agent Harness Engineering</div>
-    </div>
-    <div class="flow-cap">
-      <span>болтаешь с AI, генеришь — <i>игрушка</i></span>
-      <span>собираешь команды агентов под задачи</span>
-      <span class="neon-g"><b>2026: строишь СРЕДУ — память, данные, оркестрация ← здесь деньги</b></span>
+    <h2 style="margin-bottom:22px">Три эпохи AI-разработки</h2>
+    <div class="epochs">
+      <div class="step">
+        <div class="node">Вайб-кодинг</div>
+        <div class="cap">болтаешь с AI, генеришь — <i>игрушка</i></div>
+      </div>
+      <div class="ar">→</div>
+      <div class="step">
+        <div class="node">Agentic Engineering</div>
+        <div class="cap">собираешь команды агентов под задачи</div>
+      </div>
+      <div class="ar">→</div>
+      <div class="step">
+        <div class="node on">Agent Harness Engineering</div>
+        <div class="cap green">2026: строишь СРЕДУ — память, данные, оркестрация ← здесь деньги</div>
+      </div>
     </div>
   </section>
 
@@ -275,7 +311,7 @@
     <h2>Правильная память агента = <span class="neon">4 слоя</span></h2>
     <div class="mem">
       <div class="layer"><div class="tag">Контекст<em>короткая память</em></div><div class="desc">что агент «держит в руках» прямо сейчас — как оперативка</div></div>
-      <div class="layer"><div class="tag">Вектор / RAG<em>долгая память</em></div><div class="desc">вся история; поиск <b>по смыслу</b>, а не по точным словам</div></div>
+      <div class="layer"><div class="tag">Вектор + RAG<em>долгая память</em></div><div class="desc">вся история; поиск <b>по смыслу</b>, а не по точным словам</div></div>
       <div class="layer"><div class="tag">Граф знаний<em>связи</em></div><div class="desc">кто с кем связан, что из чего следует, <b>почему</b> так решили</div></div>
       <div class="layer"><div class="tag">Навыки<em>самообучение</em></div><div class="desc">повторяющийся процесс → готовое умение агента</div></div>
     </div>
@@ -285,6 +321,30 @@
       <div class="node on">Агент достаёт нужное → решает</div>
     </div>
     <div class="quote">Не вали всё в один чат. Чем чище разложено — <span class="neon-g">тем умнее агент.</span></div>
+  </section>
+
+  <!-- НОВЫЙ: 3 разные вещи про память -->
+  <section class="slide" data-notes="Дополню важное — три вещи про память, которые постоянно путают. Простыми словами. Первое: «память агента» — это его картотека на клиента. Имя, тариф, последний тикет №42. Это обычная таблица в базе данных, никакие векторы тут не нужны и даже вредны: векторами вы не найдёте «клиента Ивана с тарифом Pro» — для этого SQL. Второе: RAG — библиотека по смыслу. Из вашей базы знаний и документации агент подмешивает в ответ релевантные куски. Запросы формулируют по-разному — смысл один. Тут векторный поиск как раз оправдан. И третье: Dreaming — та самая новая фича Anthropic, о которой я говорил. Ночной архивариус: между сессиями переструктурирует и чистит память агента. Это не замена ни базе, ни RAG — это обслуживание. Запомните просто: память — это таблица. RAG — это поиск. Dreaming — это уборка.">
+    <div class="kicker">Память · 3 вещи, которые путают</div>
+    <h2>Простыми словами: <span class="neon">что есть что</span></h2>
+    <div class="confuse">
+      <div class="cc">
+        <div class="metaphor">📇 «Картотека»</div>
+        <div class="ccn">Память агента</div>
+        <div class="ccd">Что агент знает о конкретном клиенте/процессе: имя, тариф, тикет №42. <b>Обычная таблица в БД</b> (SQL), не векторы. Векторный поиск тут не нужен.</div>
+      </div>
+      <div class="cc">
+        <div class="metaphor">📚 «Библиотека по смыслу»</div>
+        <div class="ccn">RAG</div>
+        <div class="ccd">Подмешивает в ответ <b>релевантные куски</b> из базы знаний и документации. Запросы разные — смысл один. Здесь векторный поиск оправдан.</div>
+      </div>
+      <div class="cc">
+        <div class="metaphor">🌙 «Ночной архивариус»</div>
+        <div class="ccn">Dreaming (Anthropic)</div>
+        <div class="ccd">Между сессиями <b>переструктурирует и чистит</b> память агента. <b>Не замена</b> базе и RAG — это обслуживание памяти.</div>
+      </div>
+    </div>
+    <div class="quote">Запомни просто: <b>Память</b> — это <span class="neon">таблица</span>. <b>RAG</b> — это <span class="neon-g">поиск</span>. <b>Dreaming</b> — это <span class="accent">уборка</span>.</div>
   </section>
 
   <!-- 9 ПЕРЕРАБОТАН: архитектура по-человечески -->
@@ -327,7 +387,7 @@
     <div class="flow" style="margin:14px 0">
       <div class="node">Сессии</div><div class="arrow">→</div>
       <div class="node">Граф знаний</div><div class="arrow">→</div>
-      <div class="node">Вектор. база (RAG)</div><div class="arrow">→</div>
+      <div class="node">Вектор. база + RAG</div><div class="arrow">→</div>
       <div class="node on">Агент отвечает с цитатами</div>
     </div>
     <ul>
@@ -440,13 +500,37 @@
   </section>
 
   <!-- 17 тест-вопрос + CTA -->
-  <section class="slide proof" data-notes="Заберите один вопрос: если завтра нейросеть бесплатна — что в вашем бизнесе останется ценным? Нет ответа — строите на песке. Есть — данные, процессы, упаковка под нишу — строите правильно, это ваша обвязка. SaaS-обёртки умрут; выиграют те, кто строит среду. Мы в ReveluxAI делаем это под ключ. Хотите сами — я дал карту. Не хотите — пройдём за вас. Спасибо, вопросы?">
+  <section class="slide proof" data-notes="Заберите один вопрос: если завтра нейросеть бесплатна — что в вашем бизнесе останется ценным? Нет ответа — строите на песке. Есть — данные, процессы, упаковка под нишу — строите правильно, это ваша обвязка. SaaS-обёртки умрут; выиграют те, кто строит среду. Мы в ReveluxAI делаем это под ключ. Хотите сами — я дал карту. Не хотите — пройдём этот путь вместе. И сейчас — три QR: канал, личка и Instagram.">
     <div class="kicker">Заберите с собой</div>
     <h1 style="font-size:clamp(28px,4.4vw,62px)">Что в вашем бизнесе<br>останется ценным,<br>если завтра нейросеть<br>станет <span class="neon-g">бесплатной?</span></h1>
     <div class="cta">
       <b>ReveluxAI</b> — консалтинг · разработка · внедрение · обучение команды «по-новому».<br>
-      Не хотите проходить путь сами — пройдём за вас. &nbsp; <span class="dim">[ QR · @канал ]</span>
+      Не хотите проходить путь сами — <span class="neon-g">пройдём этот путь вместе.</span>
     </div>
+  </section>
+
+  <!-- НОВЫЙ: 2 QR (канал + личка) -->
+  <section class="slide" data-notes="А ещё забирайте с собой три QR. Первый — мой Telegram-канал. Там бонус-материалы и гайды: по памяти агентов, безопасности, спецификациям, и как собрать персонального ассистента в Telegram для анализа ваших чатов и переписок. Второй — моя рабочая личка в Telegram. Пишите с запросами: бизнес-диагностика, разработка AI-систем, корпоративное обучение работать «по-новому». Третий — мой Instagram, @alex_magnier. Там личное и мысли — кейсы, философия, жизнь миссией. Сканируйте прямо сейчас, пока вы тут. Спасибо, вопросы?">
+    <div class="kicker">Бонус · сканируй сейчас</div>
+    <h2>Забирайте с собой</h2>
+    <div class="qrs">
+      <div class="qr-card">
+        <img src="QR-1%20(1).jpg" alt="Telegram-канал ReveluxAI">
+        <div class="qrn">📡 Telegram-канал</div>
+        <div class="qrd"><b>Бонусы и гайды:</b> память, безопасность, спецификации, персональный TG-ассистент для анализа чатов.</div>
+      </div>
+      <div class="qr-card">
+        <img src="QR-1%20(2).jpg" alt="Личный Telegram для запросов">
+        <div class="qrn">💬 Личка для запросов</div>
+        <div class="qrd"><b>Пишите по делу:</b> диагностика, разработка AI-систем, корп-обучение команды «по-новому».</div>
+      </div>
+      <div class="qr-card">
+        <img src="QR-instagram.jpg" alt="Instagram @alex_magnier">
+        <div class="qrn">📷 Instagram @alex_magnier</div>
+        <div class="qrd"><b>Личное и мысли:</b> кейсы, философия, жизнь миссией. <i>Preacher · AI Architect · Evangelist · Dj.</i></div>
+      </div>
+    </div>
+    <div class="quote">Сканируйте сейчас — пока вы тут, не отвлекаясь.</div>
   </section>
 
 </div>
